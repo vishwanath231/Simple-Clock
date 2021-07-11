@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Clock</title>
+    <style>
+        #clock{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            font-family: "poppins",sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock"></div>
+
+    <script>
+        setInterval(displayClock, 500);
+        function displayClock(){
+            var time = new Date();
+            var hrs = time.getHours();
+            var min = time.getMinutes();
+            var sec = time.getSeconds();
+            var am = "AM";
+            
+            if (hrs > 12) {
+                am = "PM"
+            }
+            
+            
+            if (hrs > 12) {        // Hours greater than 12  
+                hrs = hrs - 12;    // 13 = 13 - 12 = hour(1)
+            }
+            if (hrs == 0) {
+                hrs = 12;
+            }
+            if (hrs < 10) {       // Hours less than 10
+                hrs = '0' + hrs   // 2 = added zero  (02) 
+            }
+            if (min < 10) {       
+                min = '0' + min
+            }
+            
+
+            document.getElementById("clock").innerHTML = hrs + ":" + min + ":" + sec + " " + am;
+        }
+    </script>
+    
+</body>
+</html>
